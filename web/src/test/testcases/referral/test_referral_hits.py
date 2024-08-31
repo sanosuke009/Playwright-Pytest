@@ -5,6 +5,7 @@ import pytest
 from web.src.test.pageObjects.referral.jobidpage import jobidpage
 from web.src.test.pageObjects.referral.jobsearchresultpage import jobsearchresultpage
 from web.src.test.pageObjects.referral.ref_launchpage import ref_launchpage
+from web.src.test.pageObjects.referral.referralformpage import referralformpage
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -26,3 +27,11 @@ def test_referral(base:baseclass, keyword):
     assert resultpageobj.verifyresult(testdata.get("jobid")) == True
     jobidpageobj = jobidpage(base)
     assert jobidpageobj.emailthejobtoafriend(testdata.get("jobid")) == True
+    referralformpageobj = referralformpage(base)
+    assert referralformpageobj.refer(
+        testdata.get("referrerfullname"),
+        testdata.get("referreremail"),
+        testdata.get("firstname"),
+        testdata.get("lastname"),
+        testdata.get("email"),
+        testdata.get("messagetocandidate")) == True
