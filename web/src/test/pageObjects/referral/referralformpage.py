@@ -44,7 +44,7 @@ class referralformpage:
                 messagetocandidate.fill(_message)
                 self.rm.addscreenshot("The form is filled with these data: "+_referrername+" "+_referreremail+" "+
                                       _firstname+" "+_lastname+" "+_email+" "+_message)
-                #referbutton.click()
+                referbutton.click()
                 self.page.wait_for_load_state(state='networkidle')
                 successmessage = iframe.locator(selector_or_locator="xpath="+self.xpath_div_success)
                 successmessage.wait_for()
